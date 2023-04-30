@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'Neo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: Neo;
+}
+
+/* 배경화면 */
+
+/* body {
+    background-image: url(images/back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+/* 마우스 css */
+* {
+    cursor: 
+    url(https://cur.cursors-4u.net/symbols/sym-7/sym633.png), 
+    auto !important;}
+
+input:hover, button:hover {
+    cursor: 
+    url(https://cur.cursors-4u.net/symbols/sym-2/sym189.png), 
+    auto !important;}
+
+
+
+/* 리스트 틀 */
+ .todo__app {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 투두리스트 박스 */
+.container {
+    /* background-color: lemonchiffon; */
+    -webkit-box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5); 
+    box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5);
+    min-height: 80vh;
+    margin: 50px auto;
+    display: flex;
+    border-radius: 15px;
+}
+
+/* 헤더 */
+.todo__header {
+    color: magenta;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    margin: 3rem 0 0 0;
+}
+
+/* 리스트 목록 */
+.list__area {
+    /* height: 500px;
+    padding: 30px;
+    position: relative;
+    top: 10px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.list__footer {
+    border-radius: 0 0 10px 10px;
+}
+
+
+/* 쇼핑 목록 추가 버튼 */
+.add-btn {
+    padding: 8px;
+    background-color: magenta;
+    border: none;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* 헤더, 푸터 정렬 */
+/* .aligned {
+    height: 50px;
+    background-color: palegreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* 작성 칸 */
+.input__area {
+    margin-top: 2%;
+}
+
+.input {
+    width: 200px;
+    height: 35px;
+    /* background-color: lemonchiffon; */
+    border: 2px solid magenta;
+    margin-right: 10px;
+}
+
+.enter {
+    padding: 8px;
+    background-color: magenta;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/* 메뉴 탭 */
+.list__tabs {
+    /* margin-top: 1.5%; */
+    width: 20%;
+    /* position: absolute; */
+    top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.tab {
+    width: 50px;
+    height: 30px;
+    background-color: chartreuse;
+    border-radius: 10%;
+}
+
+/* 리스트 */
+.list {
+
+}
+
+.list__main {
+    overflow: auto;
+}
+
+
+/* 리스트 삭제 */
+.list__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.del-btn:hover {
+   color: magenta;
+   font-weight: bolder;
+}
