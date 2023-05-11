@@ -41,12 +41,12 @@ input:hover, button:hover {
 /* 투두리스트 박스 */
 .container {
     /* background-color: lemonchiffon; */
-    -webkit-box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5); 
+    /* -webkit-box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5); 
     box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5);
     min-height: 80vh;
     margin: 50px auto;
     display: flex;
-    border-radius: 15px;
+    border-radius: 15px; */
 }
 
 /* 헤더 */
@@ -65,6 +65,7 @@ input:hover, button:hover {
     top: 10px; */
     display: flex;
     flex-direction: column;
+    margin: 5% 0;
 }
 
 .list__footer {
@@ -102,6 +103,7 @@ input:hover, button:hover {
     /* background-color: lemonchiffon; */
     border: 2px solid magenta;
     margin-right: 10px;
+    padding: 0 5px;
 }
 
 .enter {
@@ -124,12 +126,20 @@ input:hover, button:hover {
     width: 50px;
     height: 30px;
     background-color: chartreuse;
-    border-radius: 10%;
+    border-radius: 10% 10% 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 리스트 */
-.list {
-
+#list {
+    background-color: lemonchiffon;
+    -webkit-box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5); 
+    box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5);
+    min-height: 80vh;
+    display: flex;
+    border-radius: 15px;
 }
 
 .list__main {
@@ -146,4 +156,16 @@ input:hover, button:hover {
 .del-btn:hover {
    color: magenta;
    font-weight: bolder;
+}
+
+
+
+@media all and (max-width: 768px){
+    .list__area {
+        margin-top: 10% 0;
+    }
+
+    .list__tabs {
+        width: 50%;
+    }
 }
