@@ -24,24 +24,18 @@
     <div class="todo__app">
         <h1 class="todo__header">To Do List</h1>
         <div class="input__area">
-            <input class="input" placeholder=" ex) 공부하기" />
-            <button class="enter">enter</button>
+            <input class="input" id="task__input" placeholder=" ex) 공부하기" />
+            <button class="enter" id="add__btn">enter</button>
         </div>
         <section class="container list__area">
             <div class="list__tabs">
-                <div class="tab" id="all">All</div>
-                <div class="tab" id="doing">Doing</div>
-                <div class="tab" id="done">Done</div>
+                <button class="tab custom-btn" id="all">All</button>
+                <button class="tab custom-btn" id="doing">Doing</button>
+                <button class="tab custom-btn" id="done">Done</button>
             </div>
-            <ul id="list">
-                <li class="list__item">
-                    <div>청바지</div>
-                    <div>
-                        <button>수정</button>
-                        <button>삭제</button>
-                    </div>
-                </li>
-            </ul>
+            <div id="task__list">
+                <!-- task 들어갈 공간 -->
+            </div>
         </section>
     </div>
 

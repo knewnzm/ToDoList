@@ -23,7 +23,7 @@
     url(https://cur.cursors-4u.net/symbols/sym-7/sym633.png), 
     auto !important;}
 
-input:hover, button:hover {
+input:hover, button:hover, .tab:hover {
     cursor: 
     url(https://cur.cursors-4u.net/symbols/sym-2/sym189.png), 
     auto !important;}
@@ -115,13 +115,12 @@ input:hover, button:hover {
 
 /* 메뉴 탭 */
 .list__tabs {
-    /* margin-top: 1.5%; */
-    width: 20%;
-    /* position: absolute; */
+    margin-left: 5%;
     top: 30px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start
 }
+
 .tab {
     width: 50px;
     height: 30px;
@@ -130,15 +129,51 @@ input:hover, button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    margin-right: 1vh;
+}
+/* 
+.tab:focus {
+    background-color: magenta;
+    color: white;
+    transition: all 0.3s ease;
+
+}
+.tab:focus:after {
+    background-color: magenta;
+    color: white;
 }
 
+.tab:hover {
+    background-color: magenta;
+    color: #fff;
+  }
+
+  .tab:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 10% 10% 0 0;
+    background-color: magenta;
+    background-image: linear-gradient(315deg, #ff00ff, #ff00ff);
+    transition: all 0.3s ease;
+  }
+ */
+
+
 /* 리스트 */
-#list {
+#task__list {
+    padding: 5% 0;
     background-color: lemonchiffon;
     -webkit-box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5); 
     box-shadow: 8px 6px 17px -1px rgba(0,0,0,0.5);
     min-height: 80vh;
-    display: flex;
     border-radius: 15px;
 }
 
@@ -146,11 +181,15 @@ input:hover, button:hover {
     overflow: auto;
 }
 
-
-/* 리스트 삭제 */
-.list__item {
+.task {
     display: flex;
     justify-content: space-between;
+    margin: 2% 5%;
+}
+
+.task span {
+    width: 80%;
+    word-wrap: break-word;
 }
 
 .del-btn:hover {
@@ -158,11 +197,17 @@ input:hover, button:hover {
    font-weight: bolder;
 }
 
+.task__done {
+    text-decoration: line-through;
+    color: #ffef89;
+    
+}
+
 
 
 @media all and (max-width: 768px){
     .list__area {
-        margin-top: 10% 0;
+        margin: 10% 0;
     }
 
     .list__tabs {
