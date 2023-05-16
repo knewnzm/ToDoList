@@ -1,10 +1,46 @@
 
 const taskInput = document.querySelector("#task__input"); 
 const addBtn = document.querySelector("#add__btn");
-const taskList = [];
+const tabs = document.querySelectorAll(".list__tabs div");
+const tabUnderLine = document.querySelector(".tab__underline");
+const input = document.querySelector("#task__input");
+let mode = "all";
+let filterList = [];
+let taskList = [];
+
+
+//엔터로 메모 등록하기
+input.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+        addTask();
+    }
+});
+
+
+//탭 이동시 언더라인
+tabs.forEach((menu) => 
+menu.addEventListener("click", (e) => tabIndicator(e))
+);
+
+function tabIndicator(e) {
+    tabUnderLine.style.left = e.currentTarget.offsetLeft + "px";
+    tabUnderLine.style.width = e.currentTarget.offsetWidth + "px";
+    tabUnderLine.style.top = 
+        e.currentTarget.offsetTop + (e.currentTarget.offsetHeight - 4) + "px";
+}
+
+
 
 addBtn.addEventListener("click", addTask);
 
+
+for(let i=0; i<tabs.length; i++){
+    tabs[i].addEventListener("click", function(event){
+        filter(event)}
+        );
+}
+
+//메모 등록
 function addTask() {
     const task = {
         id: randomIDGenerate(),
@@ -12,28 +48,41 @@ function addTask() {
         isComplete: false
     };
     taskList.push(task);
-    console.log(taskList);
+
+    //메모 등록시 input칸 비우기
+    input.value = '';
+    input.focus();
+
     render();
 }
 
+//새로고침
 function render() {
+    let list = [];
+    if(mode == "all") {
+        list = taskList;
+    } else if(mode == "doing" || mode == "done") {
+        list = filterList;
+    }
+
+
     let resultHTML = "";
 
-    for(let i=0; i<taskList.length; i++) {
-        if(taskList[i].isComplete == true) {
+    for(let i=0; i<list.length; i++) {
+        if(list[i].isComplete == true) {
             resultHTML += `<div class="task">
-            <span class="task__done">${taskList[i].taskContent}</span>
+            <span class="task__done">${list[i].taskContent}</span>
             <div>
-                <button onclick="toggleComplete('${taskList[i].id}')">취소</button>
+                <button onclick="toggleComplete('${list[i].id}')">취소</button>
                 <button>삭제</button>
             </div>
         </div>`;  
         } else {
             resultHTML += `<div class="task">
-        <span>${taskList[i].taskContent}</span>
+        <span>${list[i].taskContent}</span>
         <div>
-            <button onclick="toggleComplete('${taskList[i].id}')">완료</button>
-            <button onclick="deleteTask('${taskList[i].id}')">삭제</button>
+            <button onclick="toggleComplete('${list[i].id}')">완료</button>
+            <button onclick="deleteTask('${list[i].id}')">삭제</button>
         </div>
     </div>`;    
 
@@ -69,8 +118,34 @@ function deleteTask(id) {
     render();
 }
 
+//탭 필터링
+function filter(event){
+    mode = event.target.id;
+    filterList = [];
+    
+
+    if(mode == "all") {
+        render();
+    } else if(mode == "doing") {
+        for(let i=0; i<taskList.length; i++) {
+            if(taskList[i].isComplete == false) {
+                filterList.push(taskList[i]);
+            }
+        }
+        render();
+    } else if(mode == "done") {
+        for(let i=0; i<taskList.length; i++) {
+            if(taskList[i].isComplete == true) {
+                filterList.push(taskList[i]);
+            }
+        }
+        render();
+    }
+    console.log(filterList);
+}
 
 
+//랜덤 유니크아이디
 function randomIDGenerate() {
     return '_' + Math.random().toString(36).substr(2, 9);
 }
@@ -78,55 +153,4 @@ function randomIDGenerate() {
 //생성하지 않기 때문에 보안과 관련된 로직에서는 math.random()을 
 //사용하지 않는 것이 좋다.
 
-
-
-const add = document.querySelector('.add-btn');
-const list = document.querySelector('.list__main');
-const inputAdd = document.querySelector('.list__footer');
-// const delete = document.querySelector('.del-btn');
-
-
-add.addEventListener( 'click', () => {
-
-    inputAdd.innerHTML = `
-    <input class="input" placeholder=" ex) 공부하기" />
-    <button class="enter">enter</button>
-    `;
-
-    const enter = document.querySelector('.enter');
-    const input = document.querySelector('.input');
-
-    enter.addEventListener('click', () => {
-        const text = input.value.trim();
-    
-        if (text !== '') {
-        console.log(text);
-        addToList(text);
-        input.value = '';
-        input.focus();
-
-        return add();
-        
-    }
-    });
-});
-
-
-function addToList(text) {
-    const list = document.querySelector('#list');
-    const newListItem = document.createElement('li');
-    const del = document.createElement('button');
-
-    newListItem.classList.add('list__item');
-    newListItem.innerHTML = text;
-    list.appendChild(newListItem);
-
-    del.classList.add('del-btn');
-    del.innerHTML = '삭제';
-    console.log(del);
-    del.addEventListener('click', function() {
-    list.removeChild(newListItem);
-     });
-    newListItem.appendChild(del);
-}
 

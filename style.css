@@ -121,6 +121,10 @@ input:hover, button:hover, .tab:hover {
     justify-content: flex-start
 }
 
+.list__tabs div {
+    cursor: pointer;
+}
+
 .tab {
     width: 50px;
     height: 30px;
@@ -134,6 +138,17 @@ input:hover, button:hover, .tab:hover {
     z-index: 1;
     margin-right: 1vh;
 }
+
+.tab__underline {
+    position: absolute;
+    width: 0;
+    background-color: blueviolet;
+    top: 0;
+    left: 0;
+    height: 4px;
+    z-index: 2;    
+}
+
 /* 
 .tab:focus {
     background-color: magenta;
